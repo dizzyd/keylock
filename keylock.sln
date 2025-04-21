@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keylock", "keylock\keylock.csproj", "{44E470CB-28B1-40CF-B3DB-7F4FB2BF3795}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CakeBuild", "CakeBuild\CakeBuild.csproj", "{86C5F87E-CB21-4AB9-8CE8-FA935701C906}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44E470CB-28B1-40CF-B3DB-7F4FB2BF3795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44E470CB-28B1-40CF-B3DB-7F4FB2BF3795}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44E470CB-28B1-40CF-B3DB-7F4FB2BF3795}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44E470CB-28B1-40CF-B3DB-7F4FB2BF3795}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86C5F87E-CB21-4AB9-8CE8-FA935701C906}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86C5F87E-CB21-4AB9-8CE8-FA935701C906}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86C5F87E-CB21-4AB9-8CE8-FA935701C906}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86C5F87E-CB21-4AB9-8CE8-FA935701C906}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
