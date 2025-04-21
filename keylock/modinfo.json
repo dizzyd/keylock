@@ -3,11 +3,11 @@
     "modid": "keylock",
     "name": "keylock",
     "authors": [
-        "Unknown"
+        "DizzyD"
     ],
-    "description": "To be added",
+    "description": "Enable locking currently pressed keys for tired fingers",
     "version": "1.0.0",
     "dependencies": {
-        "game": ""
+        "game": "1.20.7"
     }
 }
