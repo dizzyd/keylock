@@ -5,8 +5,8 @@
     "authors": [
         "DizzyD"
     ],
-    "description": "Enable locking currently pressed keys for tired fingers",
-    "version": "1.0.0",
+    "description": "Hands free navigation",
+    "version": "1.0.1",
     "dependencies": {
         "game": "1.20.7"
     }

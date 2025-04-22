@@ -1,4 +1,6 @@
 {
-    "keylock_descriptor": "Toggle KeyLock",
-    "keylock_pressed": "Locked key"
+    "key_description": "Toggle KeyLock",
+    "loaded_msg": "KeyLock mod loaded. Use {0} to lock/unlock pressed keys",
+    "locked_msg": "Keys locked:{0}",
+    "unlocked_msg": "Keys unlocked"
 }

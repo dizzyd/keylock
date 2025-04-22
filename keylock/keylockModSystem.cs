@@ -16,18 +16,24 @@ public class keylockModSystem : ModSystem
         // Only load this mod on the client side
         return forSide == EnumAppSide.Client;
     }
-
+    
     public override void StartClientSide(ICoreClientAPI api)
     {
         this.capi = api;
+        api.Logger.Audit("Starting keylock client side");
 
-        // Register a hotkey for toggling key lock state
-        api.Input.RegisterHotKey("keylockertoggle", Lang.Get("keylock_descriptor"), toggleKey, 
-            HotkeyType.GUIOrOtherControls);
+        // Register a hotkey for toggling key lock state with improved registration
+        api.Input.RegisterHotKey("keylockertoggle", Lang.Get("keylock:key_description"), toggleKey, 
+            HotkeyType.CharacterControls);
         api.Input.SetHotKeyHandler("keylockertoggle", OnToggleKeyLock);
-
+        
         // Register for game tick to simulate locked keys being pressed
         api.Event.RegisterGameTickListener(OnGameTick, 20);
+        
+        // Show startup message to confirm mod is loaded (use the actual registered key)
+        var actualKey = api.Input.GetHotKeyByCode("keylockertoggle");
+
+        api.ShowChatMessage(Lang.Get("keylock:loaded_msg", actualKey.CurrentMapping));
     }
 
     private bool OnToggleKeyLock(KeyCombination comb)
@@ -39,17 +45,28 @@ public class keylockModSystem : ModSystem
             capi.Logger.Audit($"Depressing key: {key}");
             capi.Input.KeyboardKeyState[(int)key] = false;
         }
+        var hadLockedKeys = lockedKeys.Count > 0;
         lockedKeys.Clear();
         
         // Find any keys currently being pressed; they need to be locked
+        var keyString = "";
         for (int i = 0; i < capi.Input.KeyboardKeyStateRaw.Length; i++)
         {
             if (capi.Input.KeyboardKeyStateRaw[i] && i != (int)toggleKey)
             {
                 GlKeys key = (GlKeys)i;
                 lockedKeys[key] = true;
-                capi.ShowChatMessage($"{Lang.Get("keylock_pressed")}: {GlKeyNames.ToString(key)}");
+                keyString += " " + GlKeyNames.ToString(key);
             }
+        }
+
+        if (keyString != "")
+        {
+            capi.ShowChatMessage(Lang.Get("keylock:locked_msg", keyString));
+        }
+        else if (hadLockedKeys)
+        {
+            capi.ShowChatMessage(Lang.Get("keylock:unlocked_msg"));
         }
         
         return true;
@@ -63,8 +80,6 @@ public class keylockModSystem : ModSystem
         // Simulate key presses for all locked keys
         foreach (var key in lockedKeys.Keys)
         {
-            // The KeyboardKeyState is what's used for movement/actions,
-            // so we need to make sure it shows our locked keys as pressed
             capi.Input.KeyboardKeyState[(int)key] = true;
         }
     }
