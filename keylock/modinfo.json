@@ -7,6 +7,7 @@
     ],
     "description": "Hands free navigation",
     "version": "1.0.1",
+    "side": "Client",
     "dependencies": {
         "game": "1.20.7"
     }
